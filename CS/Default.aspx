@@ -11,27 +11,16 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <dx:ASPxGridView ID="grid" runat="server" AutoGenerateColumns="False" DataSourceID="dsSQL"
-        KeyFieldName="ProductID" OnHtmlDataCellPrepared="grid_HtmlDataCellPrepared">
-        <Columns>
-            <dx:GridViewDataTextColumn FieldName="ProductID" ReadOnly="True" VisibleIndex="0">
-                <EditFormSettings Visible="False" />
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="ProductName" VisibleIndex="1">
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="CategoryID" VisibleIndex="2">
-            </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="UnitPrice" VisibleIndex="3">
-            </dx:GridViewDataTextColumn>
-        </Columns>
-    </dx:ASPxGridView>
-    <dx:ASPxGridViewExporter ID="gridExporter" runat="server" GridViewID="grid" OnRenderBrick="gridExporter_RenderBrick">
-    </dx:ASPxGridViewExporter>
-    <asp:SqlDataSource ID="dsSQL" runat="server" ConnectionString="<%$ ConnectionStrings:NorthwindConnectionString %>"
-        SelectCommand="SELECT [ProductID], [ProductName], [CategoryID], [UnitPrice] FROM [Products]">
-    </asp:SqlDataSource>
-    <dx:ASPxButton ID="btnExport" runat="server" OnClick="btnExport_Click" Text="Export Grid">
-    </dx:ASPxButton>
+        <dx:ASPxGridView ID="grid" runat="server" AutoGenerateColumns="False" KeyFieldName="ProductID"
+                         OnHtmlDataCellPrepared="grid_HtmlDataCellPrepared" OnExportRenderBrick="grid_ExportRenderBrick">
+            <Columns>
+                <dx:GridViewDataTextColumn FieldName="ProductID" ReadOnly="True" />
+                <dx:GridViewDataTextColumn FieldName="ProductName" />
+                <dx:GridViewDataTextColumn FieldName="UnitPrice" />
+                <dx:GridViewDataTextColumn FieldName="UnitsOnOrder" />
+            </Columns>
+        </dx:ASPxGridView>
+        <dx:ASPxButton ID="btnExport" runat="server" OnClick="btnExport_Click" Text="Export Grid" />
     </form>
 </body>
 </html>

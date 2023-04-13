@@ -8,13 +8,14 @@ using DevExpress.Web;
 using DevExpress.XtraPrinting;
 
 public partial class _Default : System.Web.UI.Page {
-    protected void Page_Load(object sender, EventArgs e) {
-
+    protected void Page_Init(object sender, EventArgs e) {
+        grid.DataSource = Product.GetData();
+        grid.DataBind();
     }
     protected void btnExport_Click(object sender, EventArgs e) {
-        DevExpress.XtraPrinting.XlsExportOptionsEx options = new XlsExportOptionsEx() { ExportType = DevExpress.Export.ExportType.WYSIWYG };
+        XlsExportOptionsEx options = new XlsExportOptionsEx() { ExportType = DevExpress.Export.ExportType.WYSIWYG };
         options.SheetName = "DevExpress";
-        gridExporter.WriteXlsToResponse(options);
+        grid.ExportXlsToResponse(options);
     }
     protected void grid_HtmlDataCellPrepared(object sender, ASPxGridViewTableDataCellEventArgs e) {
         if (e.DataColumn.FieldName == "UnitPrice") {
@@ -24,7 +25,7 @@ public partial class _Default : System.Web.UI.Page {
                 e.Cell.BackColor = Color.Green;
         }
     }
-    protected void gridExporter_RenderBrick(object sender, ASPxGridViewExportRenderingEventArgs e) {
+    protected void grid_ExportRenderBrick(object sender, ASPxGridViewExportRenderingEventArgs e) {
         if (e.RowType != GridViewRowType.Data)
             return;
         if ((e.Column as GridViewDataColumn).FieldName == "UnitPrice" && e.RowType != GridViewRowType.Header) {
