@@ -5,9 +5,6 @@
 <!-- default badges end -->
 
 # Grid View for ASP.NET Web Forms - How to export a colored grid in WYSIWYG export mode
-<!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/128540123/)**
-<!-- run online end -->
 
 This example shows how to color the exported grid when WYSIWYG export mode is used.
 
